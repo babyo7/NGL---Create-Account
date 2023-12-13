@@ -8,7 +8,7 @@ const fs = require("fs");
 const { log } = require("console");
 
 const bot = new Bot(process.env.BOT);
-const Regex = /^(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]*$/;
+const Regex = ^[a-zA-Z][a-zA-Z0-9\s!@#$%^&*()_+{}\[\]:;<>,.?/~`-]*$;
 
 bot.use(
   session({
@@ -287,19 +287,19 @@ bot.on("message:photo",async(ctx)=>{
               { command: "cancel", description: "cancel" },
             ]);
             const replyMessage = `
-            ✅ Account created successfully!
-            
-            👤 Name: ${ctx.session.name}
-            👥 Username: ${ctx.session.username}
-            🔗 Link: https://ngl-clone-production.up.railway.app/${ctx.session.username}
-            🌐 Social Link: ${ctx.session.socialLink}
-            🆔 ID: ${ctx.chat.id}
-            🚀 START @NglTelgramBot 
-            `;
-            
-            ctx.reply(replyMessage, {
-              disable_web_page_preview: true,
-            });
+        <strong>✅ Account created successfully!</strong>\n\n
+        👤 <strong>Name:</strong> ${ctx.session.name}\n\n
+        👥 <strong>Username:</strong> ${ctx.session.username}\n\n
+        🔗 <strong>Link:</strong> "https://ngl-clone-production.up.railway.app/${ctx.session.username}"\n\n
+        🌐 <strong>Social Link:</strong> ${ctx.session.socialLink}\n\n
+        🆔 <strong>ID:</strong> ${ctx.chat.id}\n\n
+        🚀 <strong>START @NglTelgramBot to Activate your account</strong>\n\n
+    `;
+
+    ctx.reply(replyMessage, {
+        parse_mode: 'HTML',
+        disable_web_page_preview: true,
+    });
             
 
 
