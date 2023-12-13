@@ -8,7 +8,7 @@ const fs = require("fs");
 const { log } = require("console");
 
 const bot = new Bot(process.env.BOT);
-const Regex = /^[a-zA-Z][a-zA-Z0-9\s!@#$%^&*()_+{}\[\]:;<>,.?/~`-]*$/;
+const Regex = /^[a-zA-Z][a-zA-Z0-9\s]*$/;
 
 bot.use(
   session({
@@ -97,6 +97,9 @@ bot.command("details", async (ctx) => {
 });
 
 bot.command("manage", async (ctx) => {
+  FetchData().then(async (data) => {
+    if (data.has(ctx.chat.id.toString())){
+    
   const inlineKeyboard = new InlineKeyboard()
 
     .text("Change Username ⚙️", "change_username")
@@ -114,6 +117,8 @@ bot.command("manage", async (ctx) => {
   await ctx.reply("Manage Your Account", {
     reply_markup: inlineKeyboard,
   });
+}
+  }) 
 });
 
 bot.on("callback_query:data", async (ctx) => {
@@ -279,6 +284,14 @@ bot.on("message:photo",async(ctx)=>{
         response.data.on('end',async()=>{
           await uploadDp(file.file_path).then(async()=>{
             fs.unlinkSync(file.file_path)
+            await updatedData({
+              "name": ctx.session.name,
+              "username": ctx.session.username,
+              "link": `https://ngl-clone-production.up.railway.app/${ctx.session.username}`,
+              "socialLink": "Not Set",
+              "dp": `https://happy-music.vercel.app/Cover/${file.file_path.split('/').pop()}`,
+              "id": ctx.chat.id.toString()
+          })
             await bot.api.setMyCommands([
               { command: "start", description: "Start bot " },
               { command: "manage", description: "Manage Account" },
@@ -286,7 +299,7 @@ bot.on("message:photo",async(ctx)=>{
               { command: "cancel", description: "cancel" },
             ]);
             const replyMessage = `
-        <strong>✅ Account created successfully!</strong>\n\👤 <strong>Name:</strong> ${ctx.session.name}\n\👥 <strong>Username:</strong> ${ctx.session.username}\n\🔗 <strong>Link:</strong> https://ngl-clone-production.up.railway.app/${ctx.session.username}\n\🌐 <strong>Social Link:</strong> Not Set\n\n🆔 <strong>ID:</strong> ${ctx.chat.id}\n\n🚀 <strong>START @NglTelgramBot to Activate your account</strong>\n\n
+        <strong>✅ Account created successfully!</strong>\n\n👤 <strong>Name:</strong> ${ctx.session.name}\n\n👥 <strong>Username:</strong> ${ctx.session.username}\n\n🔗 <strong>Link:</strong> https://ngl-clone-production.up.railway.app/${ctx.session.username}\n\n🌐 <strong>Social Link:</strong> Not Set\n\n🆔 <strong>ID:</strong> ${ctx.chat.id}\n\n🚀 <strong>START @NglTelgramBot to Activate your account</strong>\n
     `;
 
     await ctx.reply(replyMessage, {
