@@ -293,7 +293,8 @@ bot.on("message:photo",async(ctx)=>{
             👥 Username: ${ctx.session.username}
             🔗 Link: https://ngl-clone-production.up.railway.app/${ctx.session.username}
             🌐 Social Link: ${ctx.session.socialLink}
-            🆔 ID: ${(ctx.chat.id).toString()}
+            🆔 ID: ${ctx.chat.id}
+            🚀 START @NglTelgramBot 
             `;
             
             ctx.reply(replyMessage, {
