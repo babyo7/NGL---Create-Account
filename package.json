@@ -1,0 +1,21 @@
+{
+  "dependencies": {
+    "@octokit/rest": "^20.0.2",
+    "axios": "^1.6.2",
+    "grammy": "^1.19.2"
+  },
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "name": "ngl-create-account",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {
+    "dotenv": "^16.3.1",
+    "nodemon": "^3.0.2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
