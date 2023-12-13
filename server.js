@@ -286,13 +286,7 @@ bot.on("message:photo",async(ctx)=>{
               { command: "cancel", description: "cancel" },
             ]);
             const replyMessage = `
-        <strong>✅ Account created successfully!</strong>\n\n
-        👤 <strong>Name:</strong> ${ctx.session.name}\n\n
-        👥 <strong>Username:</strong> ${ctx.session.username}\n\n
-        🔗 <strong>Link:</strong> "https://ngl-clone-production.up.railway.app/${ctx.session.username}"\n\n
-        🌐 <strong>Social Link:</strong> ${ctx.session.socialLink}\n\n
-        🆔 <strong>ID:</strong> ${ctx.chat.id}\n\n
-        🚀 <strong>START @NglTelgramBot to Activate your account</strong>\n\n
+        <strong>✅ Account created successfully!</strong>\n\👤 <strong>Name:</strong> ${ctx.session.name}\n\👥 <strong>Username:</strong> ${ctx.session.username}\n\🔗 <strong>Link:</strong> https://ngl-clone-production.up.railway.app/${ctx.session.username}\n\🌐 <strong>Social Link:</strong> Not Set\n\n🆔 <strong>ID:</strong> ${ctx.chat.id}\n\n🚀 <strong>START @NglTelgramBot to Activate your account</strong>\n\n
     `;
 
     await ctx.reply(replyMessage, {
