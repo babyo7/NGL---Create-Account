@@ -77,6 +77,16 @@ bot.command("start", async (ctx) => {
 });
 
 bot.command("details", async (ctx) => {
+  ctx.session.name= null,
+  ctx.session.username= null,
+  ctx.session.DP= null,
+  ctx.session.socialMedia= null,
+  ctx.session.form= false,
+  ctx.session.NewName= false,
+  ctx.session.NewUsername= false,
+  ctx.session.NewDP= false,
+  ctx.session.NewsocialMedia= false,
+  ctx.session.delete= false,
   FetchData().then(async (data) => {
     if (data.has(ctx.chat.id.toString())) {
       await ctx.reply(
