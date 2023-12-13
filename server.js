@@ -404,3 +404,5 @@ async function FetchUsername() {
 }
 
 bot.start();
+
+console.log("bot running")
