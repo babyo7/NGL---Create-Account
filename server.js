@@ -79,7 +79,7 @@ bot.command("start", async (ctx) => {
 bot.command("details", async (ctx) => {
   FetchData().then(async (data) => {
     if (data.has(ctx.chat.id.toString())) {
-      ctx.reply(
+      await ctx.reply(
         `
       <b>👤 Name:</b> ${data.get(ctx.chat.id.toString()).name}\n
 <b>👥 Username:</b> ${data.get(ctx.chat.id.toString()).username} \n
@@ -295,7 +295,7 @@ bot.on("message:photo",async(ctx)=>{
         🚀 <strong>START @NglTelgramBot to Activate your account</strong>\n\n
     `;
 
-    ctx.reply(replyMessage, {
+    await ctx.reply(replyMessage, {
         parse_mode: 'HTML',
         disable_web_page_preview: true,
     });
