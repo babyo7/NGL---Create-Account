@@ -8,7 +8,7 @@ const fs = require("fs");
 const { log } = require("console");
 
 const bot = new Bot(process.env.BOT);
-const Regex = ^[a-zA-Z][a-zA-Z0-9\s!@#$%^&*()_+{}\[\]:;<>,.?/~`-]*$;
+const Regex = /^[a-zA-Z][a-zA-Z0-9\s!@#$%^&*()_+{}\[\]:;<>,.?/~`-]*$/;
 
 bot.use(
   session({
