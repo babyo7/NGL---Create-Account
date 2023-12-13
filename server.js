@@ -27,7 +27,6 @@ bot.use(
   })
 );
 
-
 bot.command('cancel',async (ctx)=>{
   ctx.session.name= null,
   ctx.session.username= null,
