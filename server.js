@@ -326,7 +326,8 @@ bot.on("message:photo",async(ctx)=>{
         parse_mode: 'HTML',
         disable_web_page_preview: true,
     });
-            
+          
+    ctx.session.form = false
 
 
           })
@@ -346,6 +347,7 @@ bot.on("message:photo",async(ctx)=>{
               updateUser((ctx.chat.id).toString(),'dp',`https://happy-music.vercel.app/Cover/${file.file_path.split('/').pop()}`).then(async()=>{
                 fs.unlinkSync(file.file_path)
                 await ctx.reply("📷 Profile photo updated:");
+                ctx.session.NewDP = false
               })    
             })
           })
