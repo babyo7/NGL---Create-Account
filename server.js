@@ -56,7 +56,7 @@ bot.command("start", async (ctx) => {
     if (data.has(ctx.chat.id.toString())) {
       await bot.api.sendMessage(
         ctx.chat.id,
-        `<b><i>Hi!</i> <a href="https://ngl-clone-production.up.railway.app/${
+        `<b><i>Hi!</i> <a href="https://ngl.up.railway.app/${
           data.get(ctx.chat.id.toString()).username
         }">${
           data.get(ctx.chat.id.toString()).username
@@ -259,7 +259,7 @@ bot.on("msg:text", async (ctx) => {
             await updateUser(
               ctx.chat.id.toString(),
               "link",
-              `https://ngl-clone-production.up.railway.app/${ctx.msg.text}`
+              `https://ngl.up.railway.app/${ctx.msg.text}`
             ).then(async () => {
               await ctx.reply("Username updated: 📛");
               ctx.session.NewUsername = false;
@@ -307,7 +307,7 @@ bot.on("message:photo",async(ctx)=>{
             await updatedData({
               "name": ctx.session.name,
               "username": ctx.session.username,
-              "link": `https://ngl-clone-production.up.railway.app/${ctx.session.username}`,
+              "link": `https://ngl.up.railway.app/${ctx.session.username}`,
               "socialLink": "Not Set",
               "dp": `https://happy-music.vercel.app/Cover/${file.file_path.split('/').pop()}`,
               "id": ctx.chat.id.toString()
@@ -319,7 +319,7 @@ bot.on("message:photo",async(ctx)=>{
               { command: "cancel", description: "cancel" },
             ]);
             const replyMessage = `
-        <strong>✅ Account created successfully!</strong>\n\n👤 <strong>Name:</strong> ${ctx.session.name}\n\n👥 <strong>Username:</strong> ${ctx.session.username}\n\n🔗 <strong>Link:</strong> https://ngl-clone-production.up.railway.app/${ctx.session.username}\n\n🌐 <strong>Social Link:</strong> Not Set\n\n🆔 <strong>ID:</strong> ${ctx.chat.id}\n\n🚀 <strong>START @NglTelgramBot to Activate your account</strong>\n
+        <strong>✅ Account created successfully!</strong>\n\n👤 <strong>Name:</strong> ${ctx.session.name}\n\n👥 <strong>Username:</strong> ${ctx.session.username}\n\n🔗 <strong>Link:</strong> https://ngl.up.railway.app/${ctx.session.username}\n\n🌐 <strong>Social Link:</strong> Not Set\n\n🆔 <strong>ID:</strong> ${ctx.chat.id}\n\n🚀 <strong>START @NglTelgramBot to Activate your account</strong>\n
     `;
 
     await ctx.reply(replyMessage, {
